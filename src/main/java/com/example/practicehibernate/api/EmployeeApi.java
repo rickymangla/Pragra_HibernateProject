@@ -1,5 +1,6 @@
 package com.example.practicehibernate.api;
 
+import com.example.practicehibernate.entity.Department;
 import com.example.practicehibernate.entity.Employee;
 import com.example.practicehibernate.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,16 @@ public class EmployeeApi {
     public List<Employee> findByFirstName(@RequestParam (name="firstName") String name) {
         return employeeService.getEmployeeByFirstName(name);
     }
+
+    @GetMapping("/findById/{id}")
+    public String findEmployeeById(@PathVariable (name="id") Integer id) {
+        return employeeService.findEmployeeById(id);
+    }
+
+//    @GetMapping("/findById/{id}")
+//    public Employee findEmployeeById(@PathVariable (name="id") Integer id) {
+//        return employeeService.findEmployeeById(id);
+//    }
 
     @DeleteMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable (name="id") Integer empId) {
